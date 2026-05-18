@@ -26,11 +26,6 @@ export const metadata: Metadata = {
   title: "Effy Yin — Frontend Developer",
   description:
     "Frontend Engineer for SaaS, Fintech, AI, web3. Simplicity is my superpower.",
-  icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
-  },
 };
 
 export default function RootLayout({
