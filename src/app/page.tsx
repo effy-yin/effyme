@@ -8,7 +8,7 @@ import { PinkFlowerCard } from "./pink-flower-card";
 import { WorksSection } from "./works-section";
 
 const navLinks = [
-  { label: "About", href: "https://effy.me" },
+  { label: "About", href: "https://about.effy.me" },
   { label: "Works", href: "#works" },
 ];
 
