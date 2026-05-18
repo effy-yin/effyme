@@ -2,16 +2,28 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+### If `npm run dev` fails with `Permission denied` / lockfile errors
+
+The project folder may be owned by `root` (e.g. if it was created with `sudo`). Fix ownership once in **Terminal.app**:
+
+```bash
+sudo chown -R "$(whoami)" /Users/effy/Desktop/code/effy/effyme
+rm -rf /Users/effy/Desktop/code/effy/effyme/.next
+```
+
+Then run `npm run dev` as usual.
+
+**Workaround** (no sudo): use the helper script that runs dev from a writable copy:
+
+```bash
+chmod +x ~/effyme-dev.sh
+~/effyme-dev.sh
+```
+
+### Development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

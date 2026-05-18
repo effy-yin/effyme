@@ -1,26 +1,1036 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f6f5f1;
+  --foreground: #000000;
+  --muted: #292929;
+  --brand: #fd1e1f;
+  --accent: #e4e3dd;
+  --card: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-accent: var(--accent);
+  --color-card: var(--card);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-libre-baskerville);
+  --font-cute: var(--font-pacifico);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+.nav-link {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+  color: var(--brand);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--foreground);
+}
+
+::selection {
+  background: #1a1816;
+  color: #f5f2ed;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+.font-serif {
+  font-family: var(--font-libre-baskerville), Georgia, serif;
+}
+
+.font-cute {
+  font-family: var(--font-pacifico), cursive;
+  font-weight: 400;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 48s linear infinite;
+}
+
+@keyframes spin-slow-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 52s linear infinite;
+}
+
+/* hellodani.co: .svgContainer wrapper for <use> flowers */
+.svg-container {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: inherit;
+  flex-shrink: 0;
+}
+
+/* Footer flower mosaic — matches hellodani.co breakpoints & layout */
+.footer-mosaic {
+  --footer-flower-size: 80px;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .footer-mosaic {
+    --footer-flower-size: 150px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .footer-mosaic {
+    --footer-flower-size: 160px;
+  }
+}
+
+.footer-mosaic__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 64px 0 48px;
+}
+
+@media (min-width: 640px) {
+  .footer-mosaic__inner {
+    padding: 80px 0 56px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .footer-mosaic__inner {
+    padding: 100px 0 64px;
+  }
+}
+
+.footer-mosaic__row {
+  display: flex;
+  width: 100%;
+  min-height: 1px;
+}
+
+.footer-mosaic__quote {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 824px;
+  margin-inline: auto;
+  padding: 28px 1rem 20px;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .footer-mosaic__quote {
+    padding: 32px 1.5rem 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-mosaic__quote {
+    padding-inline: 2.5rem;
+  }
+}
+
+.footer-mosaic .svg-container {
+  image-rendering: pixelated;
+}
+
+/* Contact flower card (hero, above Get in touch) */
+.pink-flower-card {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  height: 128px;
+  overflow: hidden;
+  border-radius: 28px;
+  background-color: #0015d4;
+}
+
+.pink-flower-card .svg-container {
+  image-rendering: pixelated;
+}
+
+.pink-flower-card__spin {
+  width: 68%;
+  height: 68%;
+  transform: rotate(0deg);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.pink-flower-card__graphic {
+  width: 100%;
+  height: 100%;
+}
+
+.pink-flower-card:hover .pink-flower-card__spin,
+.pink-flower-card:focus-visible .pink-flower-card__spin {
+  animation: footer-flower-spin 2.8s linear infinite;
+}
+
+.footer-flower-cell {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 1;
+  height: auto;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+}
+
+.footer-flower-cell__spin {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.footer-flower-cell.is-spinning .footer-flower-cell__spin {
+  animation: footer-flower-spin 2.8s linear infinite;
+}
+
+@keyframes footer-flower-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Works section flower tiles (same spin as footer on hover) */
+.works-flower-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.works-flower-tile__spin {
+  transform: rotate(0deg);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.works-flower-tile:hover .works-flower-tile__spin,
+.works-flower-tile:focus-visible .works-flower-tile__spin {
+  animation: footer-flower-spin 2.8s linear infinite;
+}
+
+/* Project cards — hover background reveal (hellodani.co style) */
+.project-card__hover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.project-card__hover-bg-color {
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  bottom: -15%;
+  left: -15%;
+  transform: scale(0.22);
+  transform-origin: bottom left;
+  transition: transform 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.project-card:hover .project-card__hover-bg,
+.project-card:focus-visible .project-card__hover-bg {
+  opacity: 1;
+}
+
+.project-card:hover .project-card__hover-bg-color,
+.project-card:focus-visible .project-card__hover-bg-color {
+  transform: scale(1);
+}
+
+.project-card__description {
+  transition:
+    opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+    transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.project-card__mockup {
+  position: absolute;
+  transition:
+    transform 0.55s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.45s ease;
+}
+
+.project-card__footer {
+  min-height: 5.5rem;
+  padding-right: 1rem;
+  text-align: left;
+}
+
+.project-card__meta {
+  width: 100%;
+  text-align: left;
+}
+
+/* hellodani.co mockup sizes: small 222×222, large 380×223 (+ 8px frame) */
+.project-card {
+  --mockup-small-w: min(29vw, 238px);
+  --mockup-large-w: min(48vw, 396px);
+}
+
+.project-card--compact {
+  --mockup-small-w: min(22vw, 190px);
+  --mockup-large-w: min(36vw, 310px);
+}
+
+.project-card__mockup--small {
+  width: var(--mockup-small-w);
+  aspect-ratio: 1;
+  height: auto;
+}
+
+.project-card__mockup--large {
+  width: var(--mockup-large-w);
+  aspect-ratio: 380 / 223;
+  height: auto;
+}
+
+.project-card__mockup-media--small {
+  aspect-ratio: 1;
+}
+
+.project-card__mockup-media--large {
+  aspect-ratio: 380 / 223;
+}
+
+/* Stack order */
+.project-card--stack-small-top .project-card__mockup--small {
+  z-index: 2;
+}
+
+.project-card--stack-small-top .project-card__mockup--large {
+  z-index: 1;
+}
+
+.project-card--stack-large-top .project-card__mockup--large {
+  z-index: 2;
+}
+
+.project-card--stack-large-top .project-card__mockup--small {
+  z-index: 1;
+}
+
+/* large left, small on top — hellodani default */
+.project-card--large-left.project-card--stack-small-top .project-card__mockup--large {
+  top: 1.25rem;
+  left: 0.75rem;
+  transform: rotate(-6deg);
+}
+
+.project-card--large-left.project-card--stack-small-top .project-card__mockup--small {
+  right: 0.25rem;
+  bottom: 4.5rem;
+  transform: rotate(5deg);
+}
+
+/* large right, small on top */
+.project-card--large-right.project-card--stack-small-top .project-card__mockup--large {
+  top: 1.25rem;
+  right: 0.75rem;
+  transform: rotate(-6deg);
+}
+
+.project-card--large-right.project-card--stack-small-top .project-card__mockup--small {
+  left: 0.25rem;
+  bottom: 4.5rem;
+  transform: rotate(5deg);
+}
+
+/* large left, large on top — pewuhl */
+.project-card--large-left.project-card--stack-large-top .project-card__mockup--small {
+  top: 14%;
+  right: 1.5rem;
+  transform: rotate(-5deg);
+}
+
+.project-card--large-left.project-card--stack-large-top .project-card__mockup--large {
+  top: 36%;
+  left: -0.25rem;
+  transform: rotate(8deg);
+}
+
+/* large right, large on top */
+.project-card--large-right.project-card--stack-large-top .project-card__mockup--small {
+  top: 14%;
+  left: 1.5rem;
+  transform: rotate(-5deg);
+}
+
+.project-card--large-right.project-card--stack-large-top .project-card__mockup--large {
+  top: 36%;
+  right: -0.25rem;
+  transform: rotate(8deg);
+}
+
+/* Featured full-width: pull mockups closer together */
+.project-card--featured.project-card--large-left.project-card--stack-small-top
+  .project-card__mockup--large {
+  left: 2rem;
+}
+
+.project-card--featured.project-card--large-left.project-card--stack-small-top
+  .project-card__mockup--small {
+  right: 4.5rem;
+  bottom: 5.25rem;
+}
+
+.project-card--featured.project-card--large-right.project-card--stack-small-top
+  .project-card__mockup--large {
+  right: 2rem;
+}
+
+.project-card--featured.project-card--large-right.project-card--stack-small-top
+  .project-card__mockup--small {
+  left: 4.5rem;
+  bottom: 5.25rem;
+}
+
+.project-card--featured.project-card--large-left.project-card--stack-large-top
+  .project-card__mockup--small {
+  right: 3.5rem;
+  top: 16%;
+}
+
+.project-card--featured.project-card--large-left.project-card--stack-large-top
+  .project-card__mockup--large {
+  left: 1.5rem;
+  top: 32%;
+}
+
+.project-card--featured.project-card--large-right.project-card--stack-large-top
+  .project-card__mockup--small {
+  left: 3.5rem;
+  top: 16%;
+}
+
+.project-card--featured.project-card--large-right.project-card--stack-large-top
+  .project-card__mockup--large {
+  right: 1.5rem;
+  top: 32%;
+}
+
+@media (min-width: 768px) {
+  .project-card--large-left.project-card--stack-small-top .project-card__mockup--large {
+    top: 1.25rem;
+    left: 0.75rem;
+  }
+
+  .project-card--large-left.project-card--stack-small-top .project-card__mockup--small {
+    bottom: 5.5rem;
+    right: 0.5rem;
+  }
+
+  .project-card--large-right.project-card--stack-small-top .project-card__mockup--large {
+    top: 1.25rem;
+    right: 0.75rem;
+  }
+
+  .project-card--large-right.project-card--stack-small-top .project-card__mockup--small {
+    bottom: 5.5rem;
+    left: 0.5rem;
+  }
+
+  .project-card--featured.project-card--large-left.project-card--stack-small-top
+    .project-card__mockup--large {
+    left: 2.5rem;
+  }
+
+  .project-card--featured.project-card--large-left.project-card--stack-small-top
+    .project-card__mockup--small {
+    right: 5.5rem;
+    bottom: 5.75rem;
+  }
+
+  .project-card--featured.project-card--large-right.project-card--stack-small-top
+    .project-card__mockup--large {
+    right: 2.5rem;
+  }
+
+  .project-card--featured.project-card--large-right.project-card--stack-small-top
+    .project-card__mockup--small {
+    left: 5.5rem;
+    bottom: 5.75rem;
+  }
+}
+
+/* White rounded frame — hellodani.co project card images */
+.project-card__mockup-frame {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
+
+.project-card__mockup-media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+@media (hover: hover) {
+  .project-card__description {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+  }
+
+  .project-card:hover .project-card__description,
+  .project-card:focus-visible .project-card__description {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-card:hover .project-card__mockup,
+  .project-card:focus-visible .project-card__mockup {
+    opacity: 0;
+  }
+}
+
+.project-card--large-left.project-card--stack-small-top:hover .project-card__mockup--small,
+.project-card--large-left.project-card--stack-small-top:focus-visible
+  .project-card__mockup--small {
+  transform: rotate(5deg) scale(1.04) translate(-6px, -8px);
+}
+
+.project-card--large-left.project-card--stack-small-top:hover .project-card__mockup--large,
+.project-card--large-left.project-card--stack-small-top:focus-visible
+  .project-card__mockup--large {
+  transform: rotate(-6deg) scale(1.04) translate(8px, 6px);
+}
+
+.project-card--large-right.project-card--stack-small-top:hover .project-card__mockup--small,
+.project-card--large-right.project-card--stack-small-top:focus-visible
+  .project-card__mockup--small {
+  transform: rotate(5deg) scale(1.04) translate(6px, -8px);
+}
+
+.project-card--large-right.project-card--stack-small-top:hover .project-card__mockup--large,
+.project-card--large-right.project-card--stack-small-top:focus-visible
+  .project-card__mockup--large {
+  transform: rotate(-6deg) scale(1.04) translate(-8px, 6px);
+}
+
+.project-card--large-left.project-card--stack-large-top:hover .project-card__mockup--large,
+.project-card--large-left.project-card--stack-large-top:focus-visible
+  .project-card__mockup--large {
+  transform: rotate(8deg) scale(1.04) translate(-8px, 4px);
+}
+
+.project-card--large-left.project-card--stack-large-top:hover .project-card__mockup--small,
+.project-card--large-left.project-card--stack-large-top:focus-visible
+  .project-card__mockup--small {
+  transform: rotate(-5deg) scale(1.04) translate(6px, -6px);
+}
+
+.project-card--large-right.project-card--stack-large-top:hover .project-card__mockup--large,
+.project-card--large-right.project-card--stack-large-top:focus-visible
+  .project-card__mockup--large {
+  transform: rotate(8deg) scale(1.04) translate(8px, 4px);
+}
+
+.project-card--large-right.project-card--stack-large-top:hover .project-card__mockup--small,
+.project-card--large-right.project-card--stack-large-top:focus-visible
+  .project-card__mockup--small {
+  transform: rotate(-5deg) scale(1.04) translate(-6px, -6px);
+}
+
+/* Behind the pixels — garden section (matches hellodani Framer layout) */
+.about-section__top,
+.about-section__bottom {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .about-section__top,
+  .about-section__bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+  }
+}
+
+.about-section__collage {
+  flex: none;
+  width: 100%;
+  max-width: 408px;
+  margin-inline: auto;
+}
+
+.about-section__bottom-grid {
+  flex: none;
+  width: 100%;
+  max-width: 408px;
+  margin-inline: auto;
+}
+
+.about-section__bottom-grid .about-collage {
+  margin-inline: auto;
+}
+
+.about-collage__grid {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .about-section__collage {
+    width: 408px;
+    margin-inline: 0;
+  }
+
+  .about-section__intro,
+  .about-section__closing {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .about-section__bottom-grid {
+    width: 408px;
+    margin-inline: 0;
+  }
+}
+
+.about-collage {
+  position: relative;
+  width: 408px;
+  max-width: 100%;
+  aspect-ratio: 408 / 231;
+  height: auto;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.about-section__collage,
+.about-section__bottom-grid {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.about-collage__grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.about-photo {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  width: min-content;
+  height: min-content;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.about-photo__inner {
+  position: relative;
+  flex: none;
+  width: 88px;
+  height: 108px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.about-photo--15jfy5s {
+  box-shadow: -7px 9px 15px 2px rgb(0 0 0 / 15%);
+  transform: translateX(-50%) rotate(-9deg);
+}
+
+.about-photo--x50csy {
+  box-shadow: 5px 9px 15px 2px rgb(0 0 0 / 15%);
+  transform: translateY(-50%) rotate(5deg);
+}
+
+.about-photo--l7jchc {
+  box-shadow: 7px 9px 15px 2px rgb(0 0 0 / 15%);
+  transform: rotate(9deg);
+}
+
+.about-photo--a9h2to {
+  box-shadow: 7px 9px 15px 2px rgb(0 0 0 / 15%);
+  transform: translateX(-50%) rotate(12deg);
+}
+
+.about-photo--amnqbp {
+  box-shadow: -7px 9px 15px 2px rgb(0 0 0 / 15%);
+  transform: translateY(-50%) rotate(-7deg);
+}
+
+.about-photo--1ebr8an {
+  box-shadow: -7px 9px 15px 2px rgb(0 0 0 / 15%);
+  transform: rotate(-16deg);
+}
+
+.about-section__dash {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 1px;
+}
+
+.about-section__dash-mark {
+  display: block;
+  flex: none;
+  width: 8px;
+  height: 1px;
+  border-radius: 2px;
+  background: rgb(0 0 0 / 10%);
+}
+
+@media (max-width: 639px) {
+  .about-section__header h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .about-section__header h3 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .about-section__intro,
+  .about-section__bottom p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+
+/* ——— Mobile / small screens ——— */
+@media (max-width: 767px) {
+  .nav-link {
+    font-size: 0.875rem;
+  }
+
+  .project-card {
+    --mockup-small-w: min(34vw, 128px);
+    --mockup-large-w: min(56vw, 200px);
+  }
+
+  .project-card--compact {
+    --mockup-small-w: min(30vw, 108px);
+    --mockup-large-w: min(50vw, 175px);
+  }
+
+  .project-card__footer {
+    min-height: 0;
+    max-width: calc(100% - 1.5rem);
+  }
+
+  .project-card__mockup-frame {
+    padding: 6px;
+    border-radius: 16px;
+  }
+
+  .project-card__mockup-media {
+    border-radius: 10px;
+  }
+
+  .project-card--large-left.project-card--stack-small-top .project-card__mockup--large {
+    top: 0.5rem;
+    left: 0.35rem;
+  }
+
+  .project-card--large-left.project-card--stack-small-top .project-card__mockup--small {
+    right: 0.15rem;
+    bottom: 3.25rem;
+  }
+
+  .project-card--large-right.project-card--stack-small-top .project-card__mockup--large {
+    top: 0.5rem;
+    right: 0.35rem;
+  }
+
+  .project-card--large-right.project-card--stack-small-top .project-card__mockup--small {
+    left: 0.15rem;
+    bottom: 3.25rem;
+  }
+
+  .project-card--large-left.project-card--stack-large-top .project-card__mockup--small {
+    top: 12%;
+    right: 0.75rem;
+  }
+
+  .project-card--large-left.project-card--stack-large-top .project-card__mockup--large {
+    top: 30%;
+    left: 0;
+  }
+
+  .project-card--large-right.project-card--stack-large-top .project-card__mockup--small {
+    top: 12%;
+    left: 0.75rem;
+  }
+
+  .project-card--large-right.project-card--stack-large-top .project-card__mockup--large {
+    top: 30%;
+    right: 0;
+  }
+
+  .project-card--featured.project-card--large-left.project-card--stack-small-top
+    .project-card__mockup--large {
+    left: 0.75rem;
+  }
+
+  .project-card--featured.project-card--large-left.project-card--stack-small-top
+    .project-card__mockup--small {
+    right: 1.5rem;
+    bottom: 3.75rem;
+  }
+
+  .project-card--featured.project-card--large-right.project-card--stack-small-top
+    .project-card__mockup--large {
+    right: 0.75rem;
+  }
+
+  .project-card--featured.project-card--large-right.project-card--stack-small-top
+    .project-card__mockup--small {
+    left: 1.5rem;
+    bottom: 3.75rem;
+  }
+
+  .project-card--featured.project-card--large-left.project-card--stack-large-top
+    .project-card__mockup--small {
+    right: 1.25rem;
+    top: 14%;
+  }
+
+  .project-card--featured.project-card--large-left.project-card--stack-large-top
+    .project-card__mockup--large {
+    left: 0.5rem;
+    top: 28%;
+  }
+
+  .project-card--featured.project-card--large-right.project-card--stack-large-top
+    .project-card__mockup--small {
+    left: 1.25rem;
+    top: 14%;
+  }
+
+  .project-card--featured.project-card--large-right.project-card--stack-large-top
+    .project-card__mockup--large {
+    right: 0.5rem;
+    top: 28%;
+  }
+
+  /* No hover on small screens — hide description like desktop default state */
+  .project-card__description {
+    display: none;
+  }
+
+  .about-photo--15jfy5s {
+    top: 10%;
+    left: 47%;
+  }
+
+  .about-photo--x50csy {
+    top: 52%;
+    left: 14%;
+  }
+
+  .about-photo--l7jchc {
+    bottom: 18%;
+    left: 65.4%;
+  }
+
+  .about-photo--a9h2to {
+    bottom: 19%;
+    left: 48%;
+  }
+
+  .about-photo--amnqbp {
+    top: 50%;
+    left: 13%;
+  }
+
+  .about-photo--1ebr8an {
+    top: 18.6%;
+    left: 66.7%;
+  }
+
+  .footer-mosaic__inner {
+    padding: 48px 0 36px;
+  }
+
+  .footer-mosaic__quote {
+    padding: 20px 1rem 16px;
+  }
+
+  .footer-mosaic__quote p {
+    font-size: 1.125rem;
+    line-height: 1.35;
+  }
+}
+
+@media (min-width: 768px) {
+  .about-photo--15jfy5s {
+    top: 23px;
+    left: 47%;
+  }
+
+  .about-photo--x50csy {
+    top: 52%;
+    left: 57px;
+  }
+
+  .about-photo--l7jchc {
+    bottom: 41px;
+    left: 267px;
+  }
+
+  .about-photo--a9h2to {
+    bottom: 44px;
+    left: 48%;
+  }
+
+  .about-photo--amnqbp {
+    top: 50%;
+    left: 53px;
+  }
+
+  .about-photo--1ebr8an {
+    top: 43px;
+    left: 272px;
+  }
+
+  .project-card__mockups {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__hover-bg,
+  .project-card__hover-bg-color,
+  .project-card__mockup,
+  .project-card__description {
+    transition: none;
+  }
+
+  .project-card:hover .project-card__hover-bg-color,
+  .project-card:focus-visible .project-card__hover-bg-color {
+    transform: scale(1);
+  }
+
+  .project-card:hover .project-card__description,
+  .project-card:focus-visible .project-card__description {
+    opacity: 1;
+    transform: none;
+  }
+
+  .works-flower-tile:hover .works-flower-tile__spin,
+  .works-flower-tile:focus-visible .works-flower-tile__spin {
+    animation: none;
+  }
 }
