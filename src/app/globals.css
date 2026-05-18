@@ -98,6 +98,54 @@ body {
   );
 }
 
+/* Marquee tiles — same hover reveal as project cards */
+.project-card--marquee {
+  width: 13rem;
+}
+
+@media (min-width: 640px) {
+  .project-card--marquee {
+    width: 18rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .project-card--marquee {
+    width: 20rem;
+  }
+}
+
+.project-card--marquee .project-card__thumb {
+  z-index: 1;
+  transition: opacity 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.project-card--marquee .project-card__footer {
+  min-height: 0;
+  padding-right: 0.5rem;
+}
+
+@media (hover: hover) {
+  .project-card--marquee .project-card__meta {
+    opacity: 0;
+    transform: translateY(6px);
+    transition:
+      opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1),
+      transform 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .project-card--marquee:hover .project-card__thumb,
+  .project-card--marquee:focus-visible .project-card__thumb {
+    opacity: 0;
+  }
+
+  .project-card--marquee:hover .project-card__meta,
+  .project-card--marquee:focus-visible .project-card__meta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-fade-up {
   opacity: 0;
   animation: fade-up 0.8s ease-out forwards;
