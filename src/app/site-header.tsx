@@ -2,14 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 const leftNav = [
-  { label: "About", href: "https://effy.me" },
+  { label: "About", href: "https://about.effy.me" },
   { label: "Works", href: "#works" },
 ] as const;
 
 const rightNav = [
-  { label: "github", href: "https://github.com/effy-yin" },
+  { label: "Github", href: "https://github.com/effy-yin" },
   {
-    label: "linkedIn",
+    label: "LinkedIn",
     href: "https://www.linkedin.com/in/effy-yin-89638168/",
   },
 ] as const;

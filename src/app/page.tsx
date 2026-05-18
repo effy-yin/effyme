@@ -13,8 +13,8 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { label: "github", href: "https://github.com/effy-yin" },
-  { label: "linkedIn", href: "https://www.linkedin.com/in/effy-yin-89638168/" },
+  { label: "Github", href: "https://github.com/effy-yin" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/effy-yin-89638168/" },
 ];
 
 const services = [
@@ -43,11 +43,11 @@ const aboutImages = [
     alt: "Effy",
   },
   {
-    src: "/5.jpeg",
+    src: "/2.jpg",
     alt: "Effy",
   },
   {
-    src: "/2.jpg",
+    src: "/5.jpeg",
     alt: "Effy",
   },
   {
@@ -165,11 +165,23 @@ export default function Home() {
 
       <footer className="border-t border-[var(--border)] px-4 py-6 sm:px-6 sm:py-8 md:px-10">
         <nav className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-4 sm:gap-6">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="nav-link">
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.href.startsWith("http") ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link key={link.href} href={link.href} className="nav-link">
+                {link.label}
+              </Link>
+            ),
+          )}
           {socialLinks.map((link) => (
             <a
               key={link.href}
