@@ -4,7 +4,7 @@ import { PROJECT_IMAGE_LAYOUTS } from "./project-card-layouts";
 export const projects: Project[] = [
   {
     name: "DAOSquare Incubator",
-    tags: "web3, blockchain, Venture DAO Infrastructure, collective investing, governance, decentralized fund management",
+    tags: "Web3, Blockchain, Venture DAO Infrastructure, Collective Investing, Governance, Decentralized Fund Management",
     // Decentralized Investment & Governance Platform
     description:
       "DAOSquare Incubator is a Web3 incubation and governance platform that helps decentralized communities launch, manage, and grow DAO-driven projects and investment collectives.",
@@ -16,7 +16,7 @@ export const projects: Project[] = [
   },
   {
     name: "MuseX",
-    tags: "web3, blockchain, creator economy, DAO collaboration, decentralized governance",
+    tags: "Web3, Blockchain, Creator Economy, DAO Collaboration, Decentralized Governance",
     description:
       "MuseX is a Web3 creator and DAO collaboration platform that enables communities to co-create, fund, and manage creative projects through decentralized governance and tokenized participation.",
     image: "/musex.png",
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   },
   {
     name: "CognitiveView",
-    tags: "AI Governance Platform",
+    tags: "AI Governance, Compliance, SaaS, RegTech",
     description:
       "AI Governance & Compliance SaaS Platform focused on enterprise AI risk management, audit automation, and regulatory compliance workflows.",
     // Enterprise AI Governance & Compliance Platform (RegTech SaaS)
