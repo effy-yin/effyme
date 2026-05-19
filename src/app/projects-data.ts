@@ -4,10 +4,10 @@ import { PROJECT_IMAGE_LAYOUTS } from "./project-card-layouts";
 export const projects: Project[] = [
   {
     name: "DAOSquare Incubator",
-    tags: "web3, blockchain, Venture DAO Infrastructure,collective investing,governance,decentralized fund management",
+    tags: "web3, blockchain, Venture DAO Infrastructure, collective investing, governance, decentralized fund management",
     // Decentralized Investment & Governance Platform
     description:
-      "Corti is a healthcare AI company that builds specialized language models to support medical professionals in real time.",
+      "DAOSquare Incubator is a Web3 incubation and governance platform that helps decentralized communities launch, manage, and grow DAO-driven projects and investment collectives.",
     image: "/daosquare.png",
     link: "https://app.daosquare.fi",
     link2: "https://www.daosquare.fi",
@@ -28,7 +28,7 @@ export const projects: Project[] = [
   {
     name: "Palingen",
     tags: "Fintech",
-    description: "Option Visualizer.",
+    description: "Palingen provides interactive option strategy visualizers and real-time analytics dashboards for options trading, strategy comparison, and financial data insights.",
     image: "/palingen.png",
     link: "https://palingen.effy.me",
     link2: "https://palingen.effy.me",

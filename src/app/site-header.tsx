@@ -4,6 +4,7 @@ import Link from "next/link";
 const leftNav = [
   { label: "About", href: "https://about.effy.me" },
   { label: "Works", href: "#works" },
+  { label: "Chat", href: "/chat" },
 ] as const;
 
 const rightNav = [

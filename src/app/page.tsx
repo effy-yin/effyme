@@ -10,6 +10,7 @@ import { WorksSection } from "./works-section";
 const navLinks = [
   { label: "About", href: "https://about.effy.me" },
   { label: "Works", href: "#works" },
+  { label: "Chat", href: "/chat" },
 ];
 
 const socialLinks = [
